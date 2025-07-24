@@ -3,6 +3,7 @@ import "./Navbar.css";
 import "./image.css";
 import "../../index.css";
 import logo from "../../assets/ChatGPT Image Jul 24, 2025, 10_46_27 AM.png";
+import {Link} from 'react-scroll'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -19,13 +20,20 @@ export default function Navbar() {
   return (
     <nav className={`container navbar ${scrolled ? "scrolled" : ""}`}>
       <img src={logo} className='logo' alt="logo" />
-      <ul className="nav-links">
-        <li><a href="#" className='nav-link'>Home</a></li>
-        <li><a href="#" className='nav-link'>Choose Your Role</a></li>
-        <li><a href="#" className='nav-link'>Login</a></li>
-        <li><a href="#" className='nav-link'>Register</a></li>
-        <li><a href="#" className='nav-link'>Contact us</a></li>
+      <ul className="nav-links center-links">
+        <li><a href="#" className='nav-link'>
+            <Link to="home" smooth={true} offset={0} duration={500} >Home</Link>
+          </a>
+        </li>
+        <li><a href="#" className='nav-link'><Link to="about" smooth={true} offset={-175} duration={500} >About Us</Link></a></li>
+        <li><a href="#" className='nav-link'><Link to="contact" smooth={true} offset={-220} duration={500} >Contact us</Link></a></li>
       </ul>
+
+      <ul className="nav-links right-links">
+        <li><button className="nav-btn">Login</button></li>
+        <li><button className="nav-btn">Sign In</button></li>
+      </ul>
+
     </nav>
   );
 }

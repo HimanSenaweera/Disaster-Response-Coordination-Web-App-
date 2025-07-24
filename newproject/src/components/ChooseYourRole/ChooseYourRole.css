@@ -30,7 +30,7 @@
 .role2:hover img,
 .role3:hover img,
 .role4:hover img {
-  filter: blur(2px);
+  filter: blur(6px);
 }
 
 /* CAPTIONS */
@@ -45,9 +45,9 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  color: white;
+  color:white;
   font-size: 40px;
-    font-weight: 300px;
+    font-weight: 900;
   cursor: pointer;
   opacity: 0;
   transition: 0.7s ;
