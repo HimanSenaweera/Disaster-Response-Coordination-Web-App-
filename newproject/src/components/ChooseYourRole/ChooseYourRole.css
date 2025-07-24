@@ -1,0 +1,65 @@
+.role {
+  margin: 80px auto;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+
+.role1, .role2, .role3, .role4 {
+  flex-basis: 40%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.role1 img,
+.role2 img,
+.role3 img,
+.role4 img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: filter 0.3s ease-in-out;
+}
+
+/* ✨ Blur only when hovering */
+.role1:hover img,
+.role2:hover img,
+.role3:hover img,
+.role4:hover img {
+  filter: blur(2px);
+}
+
+/* CAPTIONS */
+
+.caption, .caption3, .caption4 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  font-size: 40px;
+    font-weight: 300px;
+  cursor: pointer;
+  opacity: 0;
+  transition: 0.7s ;
+}
+
+
+
+/* Show captions on hover */
+.role1:hover .caption,
+.role2:hover .caption,
+.role3:hover .caption3,
+.role4:hover .caption4 {
+  opacity: 1;
+}
+

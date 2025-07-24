@@ -1,0 +1,84 @@
+.home {
+  width: 100%;
+  min-height: 100vh;
+  background-image: 
+    linear-gradient(rgba(55, 55, 61, 0.7), rgba(55, 55, 61, 0.7)),
+    url(../../assets/2151253343.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  display: flex;
+  /*to center the text contetnt*/
+  align-items: center;
+  justify-content: center;
+}
+
+.hometext{
+    text-align: center;
+    max-width: 1000px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1s ease-out forwards;
+    animation-delay: 0.5s
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hometext h1{
+    font-size: 80px;
+    font-weight: 600;
+}
+
+.hometext p{
+    max-width: 700px;
+    margin: 10px auto 20px; /* 10px from top 20px from bottom left and right are auto */
+    line-height : 1.5 ;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  z-index: 10;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  animation-delay: 1.2s; /* appears after hometext (0.5s + buffer) */
+}
+
+
+.mouse {
+  width: 35px;
+  height: 55px;
+  border: 2px solid #fff;
+  border-radius: 20px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding-top: 15px;
+}
+
+.wheel {
+  width: 8px;
+  height: 6px;
+  background-color: #fff;
+  border-radius: 50%;
+  animation: wheelMove 1.5s infinite;
+}
+
+@keyframes wheelMove {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(15px);
+    opacity: 0;
+  }
+}
