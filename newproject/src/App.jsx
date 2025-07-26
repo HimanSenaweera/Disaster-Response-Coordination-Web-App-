@@ -1,29 +1,23 @@
 import React from 'react'
 import Navbar from './components/Navbar/Navbar'
 import Home from './components/Home/Home'
-import ChooseYourRole from './components/ChooseYourRole/ChooseYourRole'
-import Title from './components/Title/Title'
-import AboutUs from './components/AboutUs/AboutUs'
-import Contact from './components/Contact/Contact'
+
+import { useState} from 'react'
+import LoginPopup from './components/LoginPopup/LoginPopup'
+import MainRoutes from './components/MainRoutes/MainRoutes';
+
 
 
 export default function App() {
+  const [showLogin , setShowlogin]= useState(false);
+
   return (
-    <div>
-      <Navbar/>
-      <Home />
-      
-      <AboutUs />
-      <div className='container'>
-        <Title subTitle='Contact us' title='Get in Touch'/>
-        <Contact />
-      </div>
-
-
-      
-      
-    </div>
-  )
+    <>
+      {showLogin && <LoginPopup setShowLogin={setShowlogin} />}
+      <Navbar setShowlogin={setShowlogin} />
+      <MainRoutes />
+    </>
+  );
 }
 
 /*      <div className='container'>

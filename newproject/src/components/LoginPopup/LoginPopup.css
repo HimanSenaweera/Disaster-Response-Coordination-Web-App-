@@ -1,0 +1,126 @@
+.login-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  backdrop-filter: blur(3px);
+}
+
+.login-popup-container {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 30px;
+  width: 350px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: fadeInPopup 0.4s ease;
+}
+
+@keyframes fadeInPopup {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-popup-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.login-popup-title h4 {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.login-popup-title img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.login-popup-title img:hover {
+  transform: rotate(90deg);
+}
+
+.login-popup-input {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.login-popup-input input[list] {
+    padding-right: 30px;
+    /* space for dropdown arrow */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23999" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px 16px;
+}
+
+.login-popup-input select:focus {
+  border-color: #007bff;
+}
+
+
+.login-popup-container button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.login-popup-container button:hover {
+  background-color: #0056b3;
+}
+
+.login-popup-condition {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.login-popup-condition input {
+  margin-right: 8px;
+}
+
+.login-popup-container p {
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+}
+
+.login-popup-container span {
+  color: #007bff;
+  cursor: pointer;
+  font-weight: 600;
+  margin-left: 5px;
+  transition: text-decoration 0.2s ease;
+}
+
+.login-popup-container span:hover {
+  text-decoration: underline;
+}
