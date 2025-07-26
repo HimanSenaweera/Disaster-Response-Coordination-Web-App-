@@ -1,24 +1,8 @@
-.Volunteer {
-    width: 100%;
-    min-height: 100vh;
-    background-image:
-        linear-gradient(rgba(91, 91, 95, 0.7), rgba(55, 55, 61, 0.7)),
-        url(../../assets/volunteer.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    color: #fff;
-    display: flex;
-    /*to center the text contetnt*/
-    align-items: center;
-    justify-content: center;
-}
-
 .volunteer-grid-menu {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     /* 2 columns */
-    gap: 50px;
+    gap: 30px;
     max-width: 800px;
     margin: 80px auto 40px;
     padding: 20px;
@@ -27,7 +11,7 @@
 
 .menu-card {
     width: 100%;
-    max-width: 700px;
+    max-width: 300px;
     height: 150px;
     background-color: rgba(255, 255, 255, 0.15);
     /* translucent white */
@@ -48,7 +32,7 @@
 }
 
 .menu-card:hover {
-    background-color: #221f64;
-    color: rgb(255, 255, 255);
+    background-color: #2499bd;
+    color: white;
     transform: scale(1.05);
 }

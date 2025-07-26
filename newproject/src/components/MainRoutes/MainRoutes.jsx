@@ -6,9 +6,11 @@ import VolunteerPage from '../../pages/Volunteer/Volunteer'
 import ResponderPage from '../../pages/Responder/Responder';
 import EffectedPage from '../../pages/Effected/Effected';
 import GovernmentPage from '../../pages/Government/Government';
-import Title from '../../components/Title/Title'
-import AboutUs from '../../components/AboutUs/AboutUs'
-import Contact from '../../components/Contact/Contact'
+import Title from '../Title/Title'
+import AboutUs from '../AboutUs/AboutUs'
+import Contact from '../Contact/Contact'
+import VolunteerProfile from '../VolunteerForm/VolunteerForm'; // Form component
+import ReportForm from '../Reportform/Reportform';
 
 
 
@@ -27,7 +29,9 @@ export default function MainRoutes() {
             </div>
         </>
 }       />
-
+        
+          <Route path="/Volunteer/profile" element={<VolunteerProfile />} />
+          <Route path="/Volunteer/report" element={<ReportForm />} />
         <Route path="/Volunteer" element={<VolunteerPage />} />
         <Route path="/Responder" element={<ResponderPage />} />
         <Route path="/Effected" element={<EffectedPage />} />

@@ -1,0 +1,90 @@
+.volunteer-form-wrapper {
+    background-image:
+            linear-gradient(rgba(91, 91, 95, 0.7), rgba(55, 55, 61, 0.7)),
+            url(../../assets/volunteer.png);
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 10px;
+    background-size: cover;
+    background-position: center;
+}
+
+.volunteer-form {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    color: white;
+}
+
+.volunteer-form label {
+    font-weight: bold;
+}
+
+input,
+select {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.checkbox-group label {
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+button {
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: #00aaff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.submit-btn,
+.back-btn {
+    width: 48%;
+    padding: 12px 0;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.submit-btn {
+    background-color: #00aaff;
+    color: white;
+}
+
+.back-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid white;
+}

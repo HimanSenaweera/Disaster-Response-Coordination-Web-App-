@@ -1,0 +1,114 @@
+.report-form-wrapper {
+    background-image:
+            linear-gradient(rgba(91, 91, 95, 0.7), rgba(55, 55, 61, 0.7)),
+            url(../../assets/volunteer.png);
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 40px 10px;
+        background-size: cover;
+        background-position: center;
+        height: 630px;
+}
+
+.report-form {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    padding: 2rem;
+    border-radius: 12px;
+    width: 100%;
+    height: 700px;
+    max-width: 600px;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.report-form label {
+    display: block;
+    font-weight: bold;
+    margin-top: 1rem;
+    color: white;
+}
+
+.report-form input,
+.report-form textarea,
+.report-form select {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 0.4rem;
+    border-radius: 6px;
+    border: none;
+    font-size: 1rem;
+}
+
+.radio-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.radio-group label {
+    color: white;
+    font-weight: normal;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.button-group button {
+    flex: 1;
+    /* makes both buttons the same width */
+}
+
+.submit-btn {
+    background-color: #00aaff;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    flex: 1;
+}
+
+.back-btn {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    flex: 1;
+}
+
+.urgency-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    /* optional for responsiveness */
+}
+
+.urgency-label {
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.urgency-options {
+    display: flex;
+    gap: 20px;
+}
+
+.urgency-options label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
