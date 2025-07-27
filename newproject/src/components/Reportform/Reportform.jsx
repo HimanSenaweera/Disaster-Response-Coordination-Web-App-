@@ -1,57 +1,67 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import './ReportForm.css';
 
 export default function ReportForm() {
-  const navigate = useNavigate();
+  const [text, setText] = useState('');
+  const [response, setResponse] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // form submission logic here
-    alert('Report submitted!');
+    setResponse(null);
+    setLoading(true);
+
+    try {
+      const res = await fetch('http://localhost:5000/api/parse-incident', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text }),
+      });
+
+      const data = await res.json();
+      setResponse(data.extracted || { error: 'Failed to parse. Please try again.' });
+    } catch (err) {
+      console.error(err);
+      setResponse({ error: 'Something went wrong while contacting the server.' });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="report-form-wrapper">
       <form className="report-form" onSubmit={handleSubmit}>
-
-        <label>Reporter ID</label>
-        <input type="text" name="reporterName" placeholder="Enter your name" required />
-
-        <label>Contact Number</label>
-        <input type="tel" name="contact" placeholder="Enter your phone number" required />
-
-        <label>Incident Location</label>
-        <input type="text" name="location" placeholder="Enter location of the incident" required />
-
-        <label>Type of Incident</label>
-        <select name="incidentType" required>
-          <option value="">--Select--</option>
-          <option value="Medical Emergency">Medical Emergency</option>
-          <option value="Fire">Fire</option>
-          <option value="Flood">Flood</option>
-          <option value="Rescue">Rescue</option>
-          <option value="Other">Other</option>
-        </select>
-
-        <label>Incident Description</label>
-        <textarea name="description" placeholder="Describe the incident in detail..." rows="4" required />
-
-        <div className="urgency-group">
-  <label className="urgency-label">Urgency Level:</label>
-  <div className="urgency-options">
-    <label><input type="radio" name="urgency" value="Low" /> Low</label>
-    <label><input type="radio" name="urgency" value="Medium" /> Medium</label>
-    <label><input type="radio" name="urgency" value="High" /> High</label>
-  </div>
-</div>
-
+        <label htmlFor="textReport">📄 <strong>Situation Report</strong></label>
+        <textarea
+          id="textReport"
+          rows="6"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          placeholder="Describe the emergency situation in your own words..."
+          required
+        />
 
         <div className="button-group">
-          <button type="submit" className="submit-btn">Submit Report</button>
-          <button type="button" className="back-btn" onClick={() => navigate('/Volunteer')}>Back</button>
+          <button type="submit" className="submit-btn">
+            {loading ? 'Submitting...' : 'Submit Report'}
+          </button>
         </div>
 
+        {response && (
+          <div className="ai-output-box">
+            {response.error ? (
+              <p className="error-message">❌ {response.error}</p>
+            ) : (
+              <>
+                <h3>✅ Extracted Details:</h3>
+                <p><span className="label-icon">📍</span><strong>Location:</strong> {response.location}</p>
+                <p><span className="label-icon">🚨</span><strong>Urgency:</strong> {response.urgency}</p>
+                <p><span className="label-icon">🔥</span><strong>Type of Incident:</strong> {response.type}</p>
+                <p><span className="label-icon">📦</span><strong>Category:</strong> {response.category}</p>
+              </>
+            )}
+          </div>
+        )}
       </form>
     </div>
   );

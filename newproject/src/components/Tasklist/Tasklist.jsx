@@ -1,77 +1,113 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './TaskList.css';
+import './Tasklist.css';
 
-export default function TaskListIntakeForm() {
+export default function VolunteerForm() {
   const navigate = useNavigate();
-  const [step, setStep] = useState(1); // Step 1 or Step 2
+  const [formData, setFormData] = useState({
+    volunteerId: '',
+    phone: '',
+    area: '',
+    availability: '',
+    commChannel: 'Phone',
+    skills: []
+  });
+  const [profile, setProfile] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleNext = () => setStep(2);
-  const handleBack = () => setStep(1);
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    if (type === 'checkbox') {
+      setFormData((prev) => ({
+        ...prev,
+        skills: checked
+          ? [...prev.skills, value]
+          : prev.skills.filter((skill) => skill !== value)
+      }));
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
+  };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Form submitted for task generation.");
-    // Here you can send to context or backend
+    setLoading(true);
+    setProfile('');
+
+    try {
+      const res = await fetch('http://localhost:5000/api/generate-volunteer-profile', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await res.json();
+      setProfile(data.profile || 'AI did not return a valid profile.');
+    } catch (err) {
+      console.error(err);
+      setProfile('Something went wrong while generating the profile.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className="tasklist-form-wrapper">
-      <form className="tasklist-form" onSubmit={handleSubmit}>
-        <h2>Task list Form</h2>
+    <div className="volunteer-form-wrapper">
+      <form className='volunteer-form' onSubmit={handleSubmit}>
+        <label>Volunteer ID / National ID</label>
+        <input type="text" name='volunteerId' value={formData.volunteerId} onChange={handleChange} required />
 
-        {step === 1 && (
-          <>
-            <label>Volunteer Name / ID</label>
-            <input type="text" placeholder="Enter volunteer name or ID" required />
+        <label>Contact Number</label>
+        <input type="tel" name='phone' value={formData.phone} onChange={handleChange} required />
 
-            <label>Zone of Operation</label>
-            <input type="text" placeholder="e.g. Zone A, Colombo North" required />
+        <label>Area / Zone of Operation</label>
+        <input type="text" name='area' value={formData.area} onChange={handleChange} required />
 
-            <label>Availability</label>
-            <input type="text" placeholder="e.g. Weekdays 8AM – 5PM" required />
+        <label>Skill Set</label>
+        <div className="checkbox-group">
+          {["Medical Aid", "Search & Rescue", "Logistics", "First Aid"].map(skill => (
+            <label key={skill}>
+              <input type="checkbox" value={skill} checked={formData.skills.includes(skill)} onChange={handleChange} />
+              {skill}
+            </label>
+          ))}
+        </div>
 
-            <div className="skillset-inline">
-  <label className="skill-label">Skill Set:</label>
-  <div className="checkbox-row">
-    <label><input type="checkbox" value="Medical Aid" /> Medical Aid</label>
-    <label><input type="checkbox" value="Logistics" /> Logistics</label>
-    <label><input type="checkbox" value="Search & Rescue" /> Search & Rescue</label>
-    <label><input type="checkbox" value="First Aid" /> First Aid</label>
+        <label>Availability Schedule</label>
+        <input type="text" name='availability' value={formData.availability} onChange={handleChange} required />
+
+        <label>Preferred Communication Channel</label>
+        <select name="commChannel" value={formData.commChannel} onChange={handleChange}>
+          <option value="Phone">Phone</option>
+          <option value="SMS">SMS</option>
+          <option value="WhatsApp">WhatsApp</option>
+          <option value="In-app Chat">In-app Chat</option>
+        </select>
+
+        <div className="button-group">
+          <button type='submit' className="submit-btn">{loading ? 'Generating...' : 'Generate Profile'}</button>
+          <button type='button' className="back-btn" onClick={() => navigate('/Volunteer')}>Back</button>
+        </div>
+
+        {profile && (
+  <div className="volunteer-profile-card">
+    <div className="profile-header">
+      <div className="avatar">🧑</div>
+      <div>
+        <h3>Volunteer Profile</h3>
+        <p>ID: {formData.volunteerId}</p>
+      </div>
+    </div>
+    <div className="profile-info">
+      <p><strong>📍 Zone:</strong> {formData.area}</p>
+      <p><strong>🛠️ Skills:</strong> {formData.skills.join(', ') || 'None'}</p>
+      <p><strong>🕒 Availability:</strong> {formData.availability}</p>
+      <p><strong>💬 Preferred Contact:</strong> {formData.commChannel}</p>
+      <p className="ai-summary" style={{ whiteSpace: 'pre-line' }}>{profile}</p>
+    </div>
   </div>
-</div>
+)}
 
-
-            <div className="button-group">
-              <button type="button" className="next-btn" onClick={handleNext}>Next</button>
-              <button type="button" className="back-btn" onClick={() => navigate('/Volunteer')}>Back</button>
-            </div>
-          </>
-        )}
-
-        {step === 2 && (
-          <>
-            <label>Preferred Task Type</label>
-            <select required>
-              <option value="">--Select--</option>
-              <option value="Medical Support">Medical Support</option>
-              <option value="Supply Distribution">Supply Distribution</option>
-              <option value="Evacuation Support">Evacuation Support</option>
-              <option value="Communication">Communication</option>
-            </select>
-
-            <label>Past Experience (optional)</label>
-            <textarea placeholder="e.g. Participated in 2022 Galle flood relief..." rows="3" />
-
-            <label>Additional Remarks</label>
-            <textarea placeholder="Anything else we should know?" rows="3" />
-
-            <div className="button-group">
-              <button type="button" className="back-btn" onClick={handleBack}>Back</button>
-              <button type="submit" className="submit-btn">Submit</button>
-            </div>
-          </>
-        )}
       </form>
     </div>
   );

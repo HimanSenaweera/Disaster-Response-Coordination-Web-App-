@@ -1,0 +1,71 @@
+.profile-page-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    padding: 40px 20px;
+    background-image: linear-gradient(rgba(91, 91, 95, 0.7), rgba(55, 55, 61, 0.7)),
+        url(../../assets/volunteer.png);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    color: #333;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.profile-avatar {
+    font-size: 3rem;
+    width: 60px;
+    height: 60px;
+    background-color: #eee;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-info p {
+    margin: 0.4rem 0;
+    font-size: 1rem;
+}
+
+.ai-summary {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #f4f4f4;
+    border-left: 4px solid #4caf50;
+    border-radius: 8px;
+    font-style: italic;
+    white-space: pre-line;
+}
+
+.button-group {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.back-btn {
+    background-color: transparent;
+    color: #333;
+    border: 1px solid #999;
+    padding: 0.6rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
