@@ -4,6 +4,7 @@ import './Volunteer.css'
 import VolunteerForm from '../../components/VolunteerForm/VolunteerForm'
 import VolunteerHome from '../../components/VolunteerHome/VolunteerHome'
 import React2, { useState } from 'react';
+import Tasklist from '../../components/Tasklist/Tasklist'
 
 import { useNavigate } from 'react-router-dom';
 
@@ -25,9 +26,10 @@ export default function Volunteer() {
             {selectedCard === null && (
     <div className="volunteer-grid-menu">
       <div className="menu-card" onClick={() => navigate('/Volunteer/profile')}>Volunteer Profile</div>
-      <div className="menu-card" onClick={() => navigate('/Volunteer/report')}>Report Form</div>
-
-      <div className="menu-card" onClick={() => setSelectedCard("tasks")}>Task List</div>
+            <div className="menu-card" onClick={() => navigate('/Volunteer/report')}>Report Form</div>
+            
+      <div className="menu-card" onClick={() => navigate('/Volunteer/tasklist')}>Task list</div>
+      
       <div className="menu-card" onClick={() => setSelectedCard("chat")}>Chat Box</div>
     </div>
   )}
@@ -37,8 +39,14 @@ export default function Volunteer() {
     <div className="volunteer-form-container">
       <VolunteerForm />
     </div>
+        )}
+  
+  {selectedCard === "tasks" && (
+    <div className="task-form-container">
+      <Tasklist />
+    </div>
             )}
-    
+  
 
             
             
