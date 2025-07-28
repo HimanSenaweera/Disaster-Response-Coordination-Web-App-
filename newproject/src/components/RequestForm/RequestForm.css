@@ -1,0 +1,73 @@
+.request-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.request-form h2 {
+  margin-bottom: 20px;
+}
+
+.request-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.request-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+}
+
+.request-form input,
+.request-form select,
+.request-form textarea {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.request-form button {
+  padding: 10px;
+  border: none;
+  background-color: #00796b;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.request-form button:hover {
+  background-color: #004d40;
+}
+
+.cancel-button {
+  margin-top: 10px;
+  background-color: #f5f5f5;
+  color: #444;
+  padding: 10px 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.cancel-button:hover {
+  background-color: #ddd;
+}
+
+
+/* ✅ Make  the heading white */
+.request-form h2 {
+  color: white;
+}
+
+/* ✅ Make the labels white */
+.request-form label {
+  color: white;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+}
