@@ -1,0 +1,16 @@
+.GovernmentHelpCenter {
+  padding: 100px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f7fa;
+  min-height: 100vh;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.disaster-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
