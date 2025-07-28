@@ -11,7 +11,8 @@ import AboutUs from '../AboutUs/AboutUs'
 import Contact from '../Contact/Contact'
 import VolunteerProfile from '../VolunteerForm/VolunteerForm'; // Form component
 import ReportForm from '../Reportform/Reportform';
-
+import Tasklist from '../../components/Tasklist/Tasklist'
+import Volunteer from '../Profile/Profile'
 
 
 
@@ -29,13 +30,15 @@ export default function MainRoutes() {
             </div>
         </>
 }       />
-        
+          <Route path="/volunteer-profile" element={<Volunteer />} />
+
           <Route path="/Volunteer/profile" element={<VolunteerProfile />} />
           <Route path="/Volunteer/report" element={<ReportForm />} />
         <Route path="/Volunteer" element={<VolunteerPage />} />
         <Route path="/Responder" element={<ResponderPage />} />
         <Route path="/Effected" element={<EffectedPage />} />
-        <Route path="/Governmnet" element={<GovernmentPage />} />
+      <Route path="/Governmnet" element={<GovernmentPage />} />
+      <Route path="/Volunteer/tasklist" element={<Tasklist />} />
       </Routes>
     
   );
