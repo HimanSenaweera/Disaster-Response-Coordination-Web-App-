@@ -1,0 +1,69 @@
+.AffectedIndividual {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url('../../assets/2151253343.jpg'); /* 👈 image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+
+/* dark overlay */
+.AffectedIndividual::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* darkens image */
+  z-index: 0;
+}
+
+/* Push content above overlay */
+.AffectedIndividual > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* ℹ️ Info banner at the top */
+.info-banner {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 14px 18px;
+  border-radius: 8px;
+  border: 1px solid #ffeeba;
+  margin: 20px auto;
+  max-width: 500px;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 500;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.menu-card {
+  background-color: rgba(255, 255, 255, 0.1); /* slightly transparent for dark background */
+  padding: 16px;
+  text-align: center;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  color: white; /* ←✅ THIS LINE CHANGES FONT COLOR TO WHITE */
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.affected-grid-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* 👈 This controls the space between Submit Help & View Updates */
+  align-items: center;
+  width: 100%;
+  max-width: 260px;
+}
